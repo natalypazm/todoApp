@@ -1,0 +1,17 @@
+*{
+	outline:1px solid green;
+}
+.title{
+	text-align:center;
+	background:#CCC;
+}
+.texto{
+	width: 100%;
+	border:2px solid skyblue;
+}
+.agregar{
+	border:1px solid blue;
+	border-radius:3px;
+	background:blue;
+	color:white;
+}
