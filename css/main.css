@@ -6,6 +6,9 @@ font-family: 'Roboto', sans-serif;
 	border-top:#D8D8D8;
 	background: #E6E6E6;
 	padding:10px 0;
+	color:#848484;
+	font-weight:bold;
+
 }
 #tareaInput{
 	width: 100%;
@@ -21,4 +24,16 @@ font-family: 'Roboto', sans-serif;
 #tareas{
 	background:#E6E6E6;
 	padding:5px 0;
+}
+ul li{
+	list-style:none;
+	margin-left:-40px;
+	background:#E6E6E6;
+	padding:10px;
+}
+.tacho{
+	padding-top: 5px;
+}
+.tachar{
+	text-decoration:line-through;
 }

@@ -1,59 +1,55 @@
 (function(){
     // Variables
     var lista = document.getElementById("lista"),
-        tareaInput = document.getElementById("tareaInput"),
-        btnNuevaTarea = document.getElementById("btn-agregar");
-
+    tareaInput = document.getElementById("tareaInput"),
+    btnNuevaTarea = document.getElementById("btn-agregar");
     // Funciones
     var agregarTarea = function(){
         var tarea = tareaInput.value,
             nuevaTarea = document.createElement("li"),
-            enlace = document.createElement("a"),
             contenido = document.createTextNode(tarea);
+            check= document.createElement("input");
+            check.type= "checkbox";
+            tacho=document.createElement("i");
+            tacho.className="tacho pull-right fa fa-trash";
 
-        if (tarea === "") {
+        if (tarea == "") {
             tareaInput.setAttribute("placeholder", "Agrega una tarea válida");
             tareaInput.className = "error";
             return false;
         }
-
-        // Agregamos el contenido al enlace
-        enlace.appendChild(contenido);
-        // Le establecemos un atributo href
-        enlace.setAttribute("href", "#");
-        // Agrergamos el enlace (a) a la nueva tarea (li)
-        nuevaTarea.appendChild(enlace);
+        // Agregamos el contenido al li
+        nuevaTarea.appendChild(check);
+        nuevaTarea.appendChild(contenido);
+        nuevaTarea.appendChild(tacho);
         // Agregamos la nueva tarea a la lista
         lista.appendChild(nuevaTarea);
-
         tareaInput.value = "";
-
         for (var i = 0; i <= lista.children.length -1; i++) {
             lista.children[i].addEventListener("click", function(){
                 this.parentNode.removeChild(this);
             });
         }
-
     };
     var comprobarInput = function(){
         tareaInput.className = "";
-        teareaInput.setAttribute("placeholder", "Agrega tu tarea");
+        tareaInput.setAttribute("placeholder", "Añade tu nueva tarea :)");
     };
-
-    var eleminarTarea = function(){
+    var eliminarTarea = function(){
         this.parentNode.removeChild(this);
     };
-
+    var tacharTarea = function(){
+       if(check.checked==true){
+        nuevaTarea.className="tachar";
+       }
+    }
     // Eventos
-
     // Agregar Tarea
     btnNuevaTarea.addEventListener("click", agregarTarea);
-
     // Comprobar Input
     tareaInput.addEventListener("click", comprobarInput);
-
     // Borrando Elementos de la lista
     for (var i = 0; i <= lista.children.length -1; i++) {
-        lista.children[i].addEventListener("click", eleminarTarea);
+        lista.children[i].addEventListener("click", eliminarTarea);
     }
 }());
