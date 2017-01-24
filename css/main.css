@@ -25,7 +25,7 @@ font-family: 'Roboto', sans-serif;
 	background:#E6E6E6;
 	padding:5px 0;
 }
-ul li{
+.listas{
 	list-style:none;
 	margin-left:-40px;
 	background:#E6E6E6;
@@ -34,6 +34,6 @@ ul li{
 .tacho{
 	padding-top: 5px;
 }
-.tachar{
+.tachado{
 	text-decoration:line-through;
 }

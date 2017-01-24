@@ -1,55 +1,48 @@
-(function(){
-    // Variables
-    var lista = document.getElementById("lista"),
-    tareaInput = document.getElementById("tareaInput"),
-    btnNuevaTarea = document.getElementById("btn-agregar");
-    // Funciones
-    var agregarTarea = function(){
-        var tarea = tareaInput.value,
-            nuevaTarea = document.createElement("li"),
-            contenido = document.createTextNode(tarea);
-            check= document.createElement("input");
-            check.type= "checkbox";
-            tacho=document.createElement("i");
-            tacho.className="tacho pull-right fa fa-trash";
+    var tareaInput = document.getElementById("tareaInput");
+    var boton = document.getElementById("btn-agregar");
+    var lista= document.getElementById("lista");
 
-        if (tarea == "") {
-            tareaInput.setAttribute("placeholder", "Agrega una tarea válida");
-            tareaInput.className = "error";
-            return false;
-        }
-        // Agregamos el contenido al li
-        nuevaTarea.appendChild(check);
-        nuevaTarea.appendChild(contenido);
-        nuevaTarea.appendChild(tacho);
-        // Agregamos la nueva tarea a la lista
-        lista.appendChild(nuevaTarea);
-        tareaInput.value = "";
-        for (var i = 0; i <= lista.children.length -1; i++) {
-            lista.children[i].addEventListener("click", function(){
-                this.parentNode.removeChild(this);
+    function agregarTarea(){
+        var tarea = document.createElement("div"); 
+        var contenido = document.createElement("span");
+        contenido.innerText = tareaInput.value;
+        tarea.className = "listas";
+        tarea.appendChild(contenido);
+        lista.appendChild(tarea);
+        var check = document.createElement("input");
+        check.setAttribute("type", "checkbox");
+        tarea.insertBefore(check,tarea.childNodes[0]);
+        check.addEventListener("click", function(){
+            
+            if(this.checked){
+                this.parentElement.classList.add("tachado");
+            }
+            else
+                this.parentElement.classList.remove("tachado");
+        });
+        
+        
+        var botonTacho = document.createElement("button");
+        var tacho = document.createElement("i");  
+        botonTacho.appendChild(tacho);
+        botonTacho.className="tacho pull-right fa fa-trash";
+        botonTacho.classList.add("tacho");
+        tarea.appendChild(botonTacho);   
+        
+        botonTacho.addEventListener("click", function(){
+                lista.removeChild(tarea); 
             });
-        }
-    };
-    var comprobarInput = function(){
-        tareaInput.className = "";
-        tareaInput.setAttribute("placeholder", "Añade tu nueva tarea :)");
-    };
-    var eliminarTarea = function(){
-        this.parentNode.removeChild(this);
-    };
-    var tacharTarea = function(){
-       if(check.checked==true){
-        nuevaTarea.className="tachar";
-       }
-    }
-    // Eventos
-    // Agregar Tarea
-    btnNuevaTarea.addEventListener("click", agregarTarea);
-    // Comprobar Input
-    tareaInput.addEventListener("click", comprobarInput);
-    // Borrando Elementos de la lista
-    for (var i = 0; i <= lista.children.length -1; i++) {
-        lista.children[i].addEventListener("click", eliminarTarea);
-    }
-}());
+        };
+        boton.addEventListener("click", function(){
+                agregarTarea();
+                tareaInput.value = "";
+                tareaInput.focus(); 
+
+            if(tareaInput == "") {
+                tareaInput.setAttribute("placeholder", "Agrega una tarea válida");
+                return false;
+            }
+            
+            
+        });
+    
