@@ -3,12 +3,21 @@
     var lista= document.getElementById("lista");
 
     function agregarTarea(){
+
+
+
+           if(tareaInput.value == "") {
+               
+                tareaInput.setAttribute("placeholder", "Agrega una tarea válida");
+            }
+            else{
         var tarea = document.createElement("div"); 
         var contenido = document.createElement("span");
         contenido.innerText = tareaInput.value;
         tarea.className = "listas";
         tarea.appendChild(contenido);
         lista.appendChild(tarea);
+        }
         var check = document.createElement("input");
         check.setAttribute("type", "checkbox");
         tarea.insertBefore(check,tarea.childNodes[0]);
@@ -36,13 +45,11 @@
         boton.addEventListener("click", function(){
                 agregarTarea();
                 tareaInput.value = "";
-                tareaInput.focus(); 
+               // tareaInput.focus(); 
 
-            if(tareaInput == "") {
-                tareaInput.setAttribute("placeholder", "Agrega una tarea válida");
-                return false;
-            }
-            
+
+
+         
             
         });
     
