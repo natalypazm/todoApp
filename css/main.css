@@ -25,7 +25,7 @@ font-family: 'Roboto', sans-serif;
 	background:#E6E6E6;
 	padding:5px 0;
 }
-.listas{
+.lista li{
 	list-style:none;
 	margin-left:-40px;
 	background:#E6E6E6;
